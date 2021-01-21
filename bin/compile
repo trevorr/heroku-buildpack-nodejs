@@ -294,8 +294,10 @@ restore_cache() {
   meta_time "restore-cache-time" "$restore_cache_start_time"
 }
 
-meta_set "build-step" "restore-cache"
-restore_cache | output "$LOG_FILE"
+if [ "$USE_NPM_INSTALL" ]; then
+  meta_set "build-step" "restore-cache"
+  restore_cache | output "$LOG_FILE"
+fi
 
 build_dependencies() {
   local cache_status start
