@@ -2,8 +2,7 @@
 
 JQ="/usr/bin/jq"
 if ! test -f "$JQ"; then
-  curl -Ls https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 > "/usr/bin/jq" \
-      && chmod +x "/usr/bin/jq"
+  JQ="$BP_DIR/lib/vendor/jq-$(get_os)"
 fi
 
 read_json() {
